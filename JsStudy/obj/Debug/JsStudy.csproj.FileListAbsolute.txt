@@ -1,0 +1,6 @@
+E:\vs2013\JsStudy\JsStudy\bin\JsStudy.dll.config
+E:\vs2013\JsStudy\JsStudy\bin\JsStudy.dll
+E:\vs2013\JsStudy\JsStudy\bin\JsStudy.pdb
+E:\vs2013\JsStudy\JsStudy\obj\Debug\JsStudy.csprojResolveAssemblyReference.cache
+E:\vs2013\JsStudy\JsStudy\obj\Debug\JsStudy.dll
+E:\vs2013\JsStudy\JsStudy\obj\Debug\JsStudy.pdb
