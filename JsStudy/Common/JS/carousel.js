@@ -8,6 +8,10 @@
         this.prevBtn = poster.find(".poster-prev-btn");
         this.nextBtn = poster.find(".poster-next-btn");
         this.posterItems = this.posterItemValue.find("li.poster-item");
+        if (this.posterItems.size() % 2 == 0) {
+            this.posterItemValue.append(this.posterItems.eq(0).clone());
+            this.posterItems = this.posterItemValue.children();
+        };
         this.posterFirstItem = this.posterItems.first();
         this.posterLastItem = this.posterItems.last();
         this.rotateFlag = true;
@@ -19,7 +23,7 @@
             posterHeight: 270,      //幻灯片第一帧高度
             scale: 0.9,             //记录显示比例关系
             speed: 500,//速度
-            autoPlay: false,
+            autoPlay: true,
             delay:5000,
             verticalAlign: "middle"
         };

@@ -16,7 +16,9 @@
                 "posterWidth": 640,
                 "posterHeight": 270,
                 "scale": 0.8,
-                "speed":50,"verticalAlign":"middle"}'>
+                "autoPlay":true,
+                "delay":3000,
+                "speed":500,"verticalAlign":"middle"}'>
             <div class="poster-btn poster-prev-btn"></div>
             <ul class="poster-list">
                 <li class="poster-item"><a href="javascript:void(0)">
@@ -37,6 +39,28 @@
                     <img width="100%" src="Common/image/4.jpg" /></a></li>
                 <li class="poster-item"><a href="javascript:void(0)">
                     <img width="100%" src="Common/image/5.jpg" /></a></li>
+            </ul>
+            <div class="poster-btn poster-next-btn"></div>
+        </div>
+
+    <div class="J_Poser poster-main" data-setting='{"width": 1000,
+            "height": 270,
+                "posterWidth": 640,
+                "posterHeight": 270,
+                "scale": 0.8,
+                "autoPlay":true,
+                "delay":3000,
+                "speed":500,"verticalAlign":"middle"}'>
+            <div class="poster-btn poster-prev-btn"></div>
+            <ul class="poster-list">
+                <li class="poster-item"><a href="javascript:void(0)">
+                    <img width="100%" src="Common/image/1.jpg" /></a></li>
+                <li class="poster-item"><a href="javascript:void(0)">
+                    <img width="100%" src="Common/image/2.jpg" /></a></li>
+                <li class="poster-item"><a href="javascript:void(0)">
+                    <img width="100%" src="Common/image/3.jpg" /></a></li>
+                <li class="poster-item"><a href="javascript:void(0)">
+                    <img width="100%" src="Common/image/4.jpg" /></a></li>
             </ul>
             <div class="poster-btn poster-next-btn"></div>
         </div>
