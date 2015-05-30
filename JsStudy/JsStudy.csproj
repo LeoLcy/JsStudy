@@ -68,16 +68,16 @@
     <Content Include="Common\image\btn_r.png" />
     <Content Include="Common\JS\carousel.js" />
     <Content Include="Common\JS\jquery-2.1.4.js" />
-    <Content Include="JsStudy1.aspx" />
+    <Content Include="carousel.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JsStudy1.aspx.cs">
-      <DependentUpon>JsStudy1.aspx</DependentUpon>
+    <Compile Include="carousel.aspx.cs">
+      <DependentUpon>carousel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="JsStudy1.aspx.designer.cs">
-      <DependentUpon>JsStudy1.aspx</DependentUpon>
+    <Compile Include="carousel.aspx.designer.cs">
+      <DependentUpon>carousel.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

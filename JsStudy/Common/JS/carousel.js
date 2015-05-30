@@ -23,9 +23,9 @@
             posterHeight: 270,      //幻灯片第一帧高度
             scale: 0.9,             //记录显示比例关系
             speed: 500,//速度
-            autoPlay: true,
-            delay:5000,
-            verticalAlign: "middle"
+            autoPlay: true,         //是否自动播放
+            delay:5000,             //自动播放延迟时间
+            verticalAlign: "middle" //幻灯片显示的位置，包含3个值"middle","top","bottom"
         };
         $.extend(this.setting, this.getSetting());
 

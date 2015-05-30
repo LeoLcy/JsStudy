@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="JsStudy1.aspx.cs" Inherits="JsStudy.JsStudy1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="carousel.aspx.cs" Inherits="JsStudy.JsStudy1" %>
 
 <!DOCTYPE html>
 
@@ -43,7 +43,7 @@
             <div class="poster-btn poster-next-btn"></div>
         </div>
 
-    <div class="J_Poser poster-main" data-setting='{"width": 1000,
+    <div class="J_Poser poster-main" id="aaa" data-setting='{"width": 1000,
             "height": 270,
                 "posterWidth": 640,
                 "posterHeight": 270,
@@ -77,8 +77,11 @@
                 speed:500,//速度
                 verticalAlign:"middle"
             }
-
-            Carousel.init($(".J_Poser"));
+            //第一种方式初始化
+            var carousel = new Carousel($(".J_Poser").eq(0));
+            var carousel = new Carousel($("#aaa"));
+            //第二种方式初始化
+            //Carousel.init($(".J_Poser"));
         });
     </script>
 </body>
