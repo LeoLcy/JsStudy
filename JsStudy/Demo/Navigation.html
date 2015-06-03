@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -297,15 +297,18 @@
                 var self = $(this);
                 var itemTop = self.offset().top;
                 console.log(itemTop);
-                if (top > itemTop) {
+                if (top >itemTop-200) {
                     currentId = "#" + self.attr("id");
                 } else {
                     return false;
                 }
             });
             //给相应楼层的连接设置class取消其他class
-            $(currentId)
-            console.log(top);
+            var currentLink = menu.find(".current");
+            if (currentId && currentLink.attr("href") != currentId) {
+                currentLink.removeClass("current");
+                menu.find("[href=" + currentId + "]").addClass("current");
+            }
         });
     });
 </script>
