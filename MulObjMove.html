@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>多物体运动</title>
+    <style>
+        #ul1,li {
+            list-style: none;
+        }
+        #ul1 li {
+            width: 200px;
+            height: 100px;
+            background-color: blue;
+            margin-bottom: 20px;
+            /*border: 4px solid yellowgreen;*/
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            background-color: red;
+            float: left;
+            filter: alpha(opacity:30);
+            opacity: .3;
+        }
+        #ul2,li {
+            list-style: none;
+        }
+        #ul2 li {
+            width: 200px;
+            height: 100px;
+            background-color: yellow;
+            margin-bottom: 20px;
+            /*border: 4px solid yellowgreen;*/
+        }
+    </style>
+</head>
+<body>
+<ul id="ul2">
+    <li id="li1"></li>
+</ul>
+<ul id="ul1">
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<div></div>
+<div></div>
+<div></div>
+
+<script>
+    window.onload = function() {
+        //var aLi = document.getElementsByTagName("li");
+        //for (var i = 0, len = aLi.length; i < len; i++) {
+        //    aLi[i].timer = null; //將計時器存放在ali上,每個li保存一份計時器
+        //    aLi[i].onmouseover = function() {
+        //        startMove(this, 400, "height");
+        //    }
+        //    aLi[i].onmouseout = function() {
+        //        startMove(this, 100, "height");
+        //    }
+        //}
+
+        var oDiv = document.getElementsByTagName("div");
+        for (var j = 0, leng = oDiv.length; j < leng; j++) {
+            oDiv[j].timer = null;
+            oDiv[j].alpha = 30;
+            oDiv[j].onmouseover = function() {
+                //startMoveOpacity(this, 100);
+                startMove(this, {opacity:100,width:400});
+            }
+            oDiv[j].onmouseout = function() {
+                //startMoveOpacity(this, 30);
+                startMove(this, { opacity: 30, width: 200 });
+            }
+        }
+        //分步运动
+        var li1 = document.getElementById("li1");
+        li1.onmouseover = function() {
+            startMove(li1, 400, "width", function () {
+                startMove(li1, 300, "height", function () {
+                    startMove(li1, 30, "opacity");
+                });
+            });
+        }
+        li1.onmouseout = function() {
+            startMove(li1, 100, "opacity", function() {
+                startMove(li1, 100, "height", function () {
+                    startMove(li1, 200, "width");
+                });
+            });
+        }
+        //同时运动
+    }
+
+    //var timer = null;
+    //json={attr1:value,attr2:value2}
+    function startMove(obj, json,fn) {
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            var flag = true;
+            for (var attr in json) {
+                //取当前值
+                var currentStyle = 0;
+                if (attr === "opacity") {
+                    currentStyle = Math.round(parseFloat(getStyle(obj, attr)) * 100);
+                } else {
+                    currentStyle = parseInt(getStyle(obj, attr));
+                }
+                //计算速度
+                var speed = (json[attr] - currentStyle) / 8;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                //检测停止
+                if (json[attr] !== currentStyle) {
+                    flag = false;
+                } 
+                if (attr === "opacity") {
+                    currentStyle += speed;
+                    obj.style.filter = "alpha(opacity:" + currentStyle + ")";
+                    obj.style.opacity = currentStyle / 100;
+                } else {
+                    obj.style[attr] = currentStyle + speed + "px";
+                }
+            }
+            if (flag) {
+                clearInterval(obj.timer);
+                if (fn) {
+                    fn();
+                }
+            }
+        }, 30);
+    }
+
+    function startMoveOpacity(obj, iTarget) {
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function() {
+            var speed = (iTarget - obj.alpha) / 8;
+            speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+            if (iTarget === obj.alpha) {
+                clearInterval(obj.timer);
+            } else {
+                obj.alpha += speed;
+                obj.style.filter = "alpha(opacity:" + obj.alpha + ")";
+                obj.style.opacity = obj.alpha / 100;
+            }
+        }, 30);
+    }
+
+//解决offset属性的异常，加入padding或者border后，
+    //offsetWidth, offsetHeight等一些属性获取的值不正确
+    function getStyle(obj, attr) {
+        if (obj.currentStyle) {
+            //对IE
+            return obj.currentStyle[attr];
+        } else {
+            //对火狐
+            return getComputedStyle(obj, false)[attr];
+        }
+    }
+</script>
+</body>
+</html>
