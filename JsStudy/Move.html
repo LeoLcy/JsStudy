@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>各种运动</title>
+    <style>
+/*重置*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+ol,ul{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+q:before,q:after{content: ;}
+abbr,acronym{border:0;}
+body{color:#666; background-color:#fff;font: 12px/1.5 '微软雅黑',tahoma,arial,'Hiragino Sans GB',宋体,sans-serif;}
+.clearfix:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.clearfix {zoom:1;}	
+        #div1 {
+            width:200px;
+            height:200px;
+            background:red;
+            position:relative;
+            left:-200px;
+            top:0;
+        }
+        #div1 span{
+            width:20px;
+            height:50px;
+            background:lightblue;
+            position:absolute;
+            left:200px;
+            top:75px;
+        }
+        #div2 {
+            width:200px;
+            height:200px;
+            background:red;
+            filter:alpha(opacity:30);
+            opacity:0.3;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <span id="share">分享</span>
+    </div>
+
+    <div id="div2"></div>
+    <script>
+        window.onload = function () {
+            //位置变化
+            var oDiv = document.getElementById("div1");
+            oDiv.onmouseover = function () {
+                startMove(0);
+            }
+            oDiv.onmouseout = function () {
+                startMove(-200);
+            }
+            //透明度变化
+            var oDiv2 = document.getElementById("div2");
+            oDiv2.onmouseover = function () {
+                setOpacity(oDiv2,100);
+            }
+            oDiv2.onmouseout = function () {
+                setOpacity(oDiv2, 30);
+            }
+        }
+        var timer = null;
+        function startMove(iTarget) {
+            clearInterval(timer);
+            var oDiv = document.getElementById("div1");
+            timer = setInterval(function () {
+                var speed = 0;
+                if (oDiv.offsetLeft > iTarget) {
+                    speed = -10;
+                } else {
+                    speed = 10;
+                }
+                if (oDiv.offsetLeft === iTarget) {
+                    clearInterval(timer);
+                }else{
+                    oDiv.style.left = oDiv.offsetLeft + speed + "px";
+                }
+            },10);
+        }
+
+        //
+        var timer1 = null;
+        var alpha = 30;
+        function setOpacity(oDiv,iTarget) {
+            clearInterval(timer1);
+            timer1 = setInterval(function(){
+                var speed=0;
+                if(alpha>iTarget){
+                    speed = -10;
+                } else { speed = 10; }
+                if (alpha === iTarget) {
+                    clearInterval(timer1);
+                } else {
+                    alpha += speed;
+                    oDiv.style.filter = 'alpha("opacity:' + alpha + '")';
+                    oDiv.style.opacity = alpha / 100;
+                }
+            },50);
+        }
+    </script>
+    <script src="Common/JS/jquery-2.1.4.js"></script>
+</body>
+</html>
