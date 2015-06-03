@@ -59,10 +59,15 @@
   <ItemGroup>
     <Content Include="Common\css\carousel.css" />
     <Content Include="Common\image\1.jpg" />
+    <Content Include="Common\image\1F.jpg" />
     <Content Include="Common\image\2.jpg" />
+    <Content Include="Common\image\2F.jpg" />
     <Content Include="Common\image\3.jpg" />
+    <Content Include="Common\image\3F.jpg" />
     <Content Include="Common\image\4.jpg" />
+    <Content Include="Common\image\4F.png" />
     <Content Include="Common\image\5.jpg" />
+    <Content Include="Common\image\5F.jpg" />
     <Content Include="Common\image\6.jpg" />
     <Content Include="Common\image\btn_l.png" />
     <Content Include="Common\image\btn_r.png" />
@@ -70,6 +75,8 @@
     <Content Include="Common\JS\jquery-2.1.4.js" />
     <Content Include="carousel.aspx" />
     <Content Include="Move.html" />
+    <Content Include="MulObjMove.html" />
+    <Content Include="Demo\Navigation.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
