@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script>
+        //date返回当前的日期和时间
+        //var weekday = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" ];
+        //var d = new Date();
+        //var date        = d.getDate(),      //查看Date对象并返回日期（1-31）
+        //    day         = d.getDay(),       //返回星期几（0-6）
+        //    hours       = d.getHours(),     //返回小时数（0-23）
+        //    minutes     = d.getMinutes(),   //返回分钟数（0-59）
+        //    month       = d.getMonth()+1,     //返回月份值（从0开始+1）
+        //    seconds     = d.getSeconds(),   //返回秒数
+        //    times       = d.getTime(),      //返回毫秒数
+        //    year        = d.getYear(),      //返回年份，获得年最好用
+        //    fullyear = d.getFullYear();  //（完整格式，如2014）
+        //console.log("Date:" + d + "<br/>");
+        //console.log("getYear:" + year+"<br/>");
+        //console.log("getMonth:" + month + "<br/>");
+        //console.log("getDay:" + weekday[day] + "<br/>");
+        //console.log("getHours:" + hours + "<br/>");
+        //console.log("getMinutes:" + minutes + "<br/>");
+        //console.log("getSeconds:" + seconds + "<br/>");
+        //console.log("getFullYear:" + fullyear + "<br/>");
+        //console.log("getTime:" + times + "<br/>");
+
+        window.onload = function () {
+            showTime();
+
+            var curtime = new Date();
+            var endtime = new Date("" + curtime.getFullYear() + "/6/6");
+            var lefttime = (endtime.getTime() - curtime.getTime()) / (24 * 60 * 60*1000);
+            alert(Math.ceil(lefttime));//倒计时天数
+        }
+        function checkTime(i) {  //补位处理
+
+            return i < 10 ? "0" + i : "" + i;
+
+
+        }
+        function showTime() {
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = now.getMonth() + 1;
+            var day = now.getDate();
+            var h = now.getHours();
+            var m = now.getMinutes();
+            var s = now.getSeconds();
+            m = checkTime(m)
+            s = checkTime(s)
+
+            var weekday = new Array(7)
+            weekday[0] = "星期日"
+            weekday[1] = "星期一"
+            weekday[2] = "星期二"
+            weekday[3] = "星期三"
+            weekday[4] = "星期四"
+            weekday[5] = "星期五"
+            weekday[6] = "星期六"
+
+            document.getElementById("timeShow").innerHTML = "" + year + "年" + month + "月" + day + "日 " + weekday[day] + h + ":" + m + ":" + s;
+            t = setTimeout('showTime()', 500)
+        }
+        
+    </script>
+</head>
+<body>
+    <div id="timeShow"></div>
+</body>
+</html>

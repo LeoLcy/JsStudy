@@ -57,6 +57,28 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BootstrapStudy\index.html" />
+    <Content Include="Common\bimages\chrome-big.jpg" />
+    <Content Include="Common\bimages\chrome-logo-small.jpg" />
+    <Content Include="Common\bimages\chrome-logo.jpg" />
+    <Content Include="Common\bimages\firefox-big.jpg" />
+    <Content Include="Common\bimages\firefox-logo-small.jpg" />
+    <Content Include="Common\bimages\firefox-logo.jpg" />
+    <Content Include="Common\bimages\ie-big.jpg" />
+    <Content Include="Common\bimages\ie-logo.jpg" />
+    <Content Include="Common\bimages\opera-big.jpg" />
+    <Content Include="Common\bimages\opera-logo.jpg" />
+    <Content Include="Common\bimages\safari-big.jpg" />
+    <Content Include="Common\bimages\safari-logo-small.jpg" />
+    <Content Include="Common\bimages\safari-logo.jpg" />
+    <Content Include="Common\bootstrap-3.3.4-dist\css\bootstrap-theme.css" />
+    <Content Include="Common\bootstrap-3.3.4-dist\css\bootstrap-theme.min.css" />
+    <Content Include="Common\bootstrap-3.3.4-dist\css\bootstrap.css" />
+    <Content Include="Common\bootstrap-3.3.4-dist\css\bootstrap.min.css" />
+    <Content Include="Common\bootstrap-3.3.4-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Common\bootstrap-3.3.4-dist\js\bootstrap.js" />
+    <Content Include="Common\bootstrap-3.3.4-dist\js\bootstrap.min.js" />
+    <Content Include="Common\bootstrap-3.3.4-dist\js\npm.js" />
     <Content Include="Common\css\carousel.css" />
     <Content Include="Common\image\1.jpg" />
     <Content Include="Common\image\1F.jpg" />
@@ -71,9 +93,18 @@
     <Content Include="Common\image\6.jpg" />
     <Content Include="Common\image\btn_l.png" />
     <Content Include="Common\image\btn_r.png" />
+    <Content Include="Common\image\image1\1.jpg" />
+    <Content Include="Common\image\image1\2.jpg" />
+    <Content Include="Common\image\image1\3.jpg" />
+    <Content Include="Common\image\image1\4.jpg" />
+    <Content Include="Common\image\image1\5.jpg" />
+    <Content Include="Common\image\image1\6.jpg" />
+    <Content Include="Common\image\image1\7.jpg" />
     <Content Include="Common\JS\carousel.js" />
     <Content Include="Common\JS\jquery-2.1.4.js" />
     <Content Include="carousel.aspx" />
+    <Content Include="Demo\date.html" />
+    <Content Include="Demo\Preview.html" />
     <Content Include="Move.html" />
     <Content Include="MulObjMove.html" />
     <Content Include="Demo\Navigation.html" />
@@ -90,6 +121,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Common\bootstrap-3.3.4-dist\css\bootstrap-theme.css.map" />
+    <Content Include="Common\bootstrap-3.3.4-dist\css\bootstrap.css.map" />
+    <Content Include="Common\bootstrap-3.3.4-dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Common\bootstrap-3.3.4-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Common\bootstrap-3.3.4-dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Common\bootstrap-3.3.4-dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Common\bimages\logo.psd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
