@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>event事件</title>
+    <script>
+        window.onload = function () {
+            document.onmousemove = function (e) {
+                e = e || event;
+                //document.body.innerText="x:"+e.clientX+";y:"+e.clientY;
+            }
+        };
+        function clickBlack(e){
+            e = e || event;
+            //e.preventDefault();
+            alert('black');
+            e.cancelBubble = true;
+
+        }
+    </script>
+</head>
+<body onclick="alert('body')">
+    <div style="width:500px;height:500px;background-color:red;" onclick="alert('red')">
+        <div style="width:400px;height:400px;background-color:white;" onclick="alert('white')">
+            <div style="width:300px;height:300px;background-color:black;" onclick="clickBlack()">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

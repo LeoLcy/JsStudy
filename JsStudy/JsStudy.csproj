@@ -103,6 +103,7 @@
     <Content Include="Common\JS\carousel.js" />
     <Content Include="Common\JS\jquery-2.1.4.js" />
     <Content Include="carousel.aspx" />
+    <Content Include="Demo\event.html" />
     <Content Include="Demo\date.html" />
     <Content Include="Demo\Preview.html" />
     <Content Include="Move.html" />
