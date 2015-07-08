@@ -106,6 +106,7 @@
     <Content Include="Demo\event.html" />
     <Content Include="Demo\date.html" />
     <Content Include="Demo\Preview.html" />
+    <Content Include="Demo\tab.html" />
     <Content Include="Move.html" />
     <Content Include="MulObjMove.html" />
     <Content Include="Demo\Navigation.html" />

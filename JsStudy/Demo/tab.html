@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tabs</title>
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        .tabs{width:100%;}
+        .tabs .tab-title{overflow: hidden;}
+        .tabs .tab-content{
+            overflow: hidden;clear: both;}
+        .tabs .tab-title ul>li{width:120px;height:30px;margin:0 5px;border:1px solid black;list-style: none;float: left;cursor:pointer;text-align:center;}
+        .tabs .tab-content ul>li{border:1px solid black;list-style: none;display:none;background-color: red;}
+        .tabs .tab-title .title-active{border-top:2px solid greenyellow;}
+        .tabs .tab-content .content-active{display:block;}
+    </style>
+</head>
+<body>
+<div class="tabs" id="tabs">
+    <div class="tab-title">
+        <ul>
+            <li class="title-active">tab1</li>
+            <li>tab2</li>
+            <li>tab3</li>
+            <li>tab4</li>
+        </ul>
+    </div>
+    <div class="tab-content">
+        <ul>
+            <li class="content-active">第一个tab的内容</li>
+            <li>第二个tab的内容</li>
+            <li>第三个tab的内容</li>
+            <li>第四个tab的内容</li>
+        </ul>
+    </div>
+</div>
+
+
+
+<br/>
+<hr/>
+<br/>
+
+
+<div class="tabs" id="tabs1">
+    <div class="tab-title">
+        <ul>
+            <li class="title-active">tab1</li>
+            <li>tab2</li>
+            <li>tab3</li>
+            <li>tab4</li>
+        </ul>
+    </div>
+    <div class="tab-content">
+        <ul>
+            <li class="content-active">第一个tab的内容</li>
+            <li>第二个tab的内容</li>
+            <li>第三个tab的内容</li>
+            <li>第四个tab的内容</li>
+        </ul>
+    </div>
+</div>
+<script>
+/*window.onload=function(){
+    var oTabs = document.getElementById("tabs");
+    var oTitle = oTabs.getElementsByClassName("tab-title")[0];
+    var oContent = oTabs.getElementsByClassName("tab-content")[0];
+    var titleLi = oTitle.getElementsByTagName("li");
+    var contentLi = oContent.getElementsByTagName("li");
+    var length=titleLi.length;
+    for(var i=0;i<length;i++){
+        titleLi[i].index=i;
+        titleLi[i].onclick=function(){
+            for(var j=0;j<length;j++) {
+                titleLi[j].className = "";
+                contentLi[j].className = "";
+            }
+            this.className = "title-active";
+            contentLi[this.index].className="content-active";
+        };
+    }
+    titleLi[2].click();
+}*/
+    ;(function(){
+        var Tabs=function(id,index){
+            this.ID=id||"tabs";
+            this.tab = document.getElementById(this.ID);
+            this.title = this.tab.getElementsByClassName("tab-title")[0];
+            this.content = this.tab.getElementsByClassName("tab-content")[0];
+            this.titleLi = this.title.getElementsByTagName("li");
+            this.contentLi = this.content.getElementsByTagName("li");
+            this.init();
+            if(index){
+                this.initDisplayIndex((parseInt(index)-1));
+            }
+        };
+        Tabs.prototype={
+            init:function(){
+                var li = this.titleLi;
+                var length=li.length;
+                for(var i=0;i<length;i++){
+                    li[i].index=i;
+                    li[i].content=this.contentLi;
+                    li[i].onclick=function(){
+                        for(var j=0;j<length;j++) {
+                            li[j].className = "";
+                            li[j].content[j].className = "";
+                        }
+                        this.className = "title-active";
+                        this.content[this.index].className="content-active";
+                    };
+                }
+            }
+            ,initDisplayIndex:function(index) {
+                this.titleLi[index].click();
+            }
+        };
+        window["Tabs"]=Tabs;
+    })();
+    window.onload=function(){
+        new Tabs("tabs");
+        new Tabs("tabs1",2);
+    };
+</script>
+</body>
+</html>
