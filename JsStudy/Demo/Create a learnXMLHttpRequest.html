@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        /*创建xmlHttpRequest对象*/
+        var xmlHttpRequest=null;
+        function createXMLHttpRequest() {
+            if(window.ActiveXObject) {
+                xmlHttpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+            }else if(window.XMLHttpRequest){
+                xmlHttpRequest = new XMLHttpRequest();
+            }
+        }
+        function test(){
+            createXMLHttpRequest();
+            xmlHttpRequest.onreadystatechange=callback;
+            xmlHttpRequest.open("POST","http://localhost:46484/FormRequest/Login",false);
+            xmlHttpRequest.setRequestHeader("content-type","application/x-www-form-urlencoded");
+            //Referer:http://localhost:46484/FormRequest/Test
+            xmlHttpRequest.setRequestHeader("Referer","http://localhost:46484/FormRequest/Test")
+            //xmlHttpRequest.setRequestHeader("Access-Control-Allow-Origin", "*");
+            var data={"UserID":"LEO","Password":"123"};
+            xmlHttpRequest.send("UserID=LEO&Password=123");
+        }
+        function callback(){
+            if(xmlHttpRequest.readyState==4){
+                //表示服务器的相应代码是200；正确返回了数据
+                if(xmlHttpRequest.status==200){
+                    //纯文本数据的接受方法
+                    var message=xmlHttpRequest.responseText;
+                    //使用的前提是，服务器端需要设置content-type为text/xml
+                    //var domXml=xmlhttp.responseXML;
+                    alert(message);
+                }
+            }
+        }
+        window.onload=function(){
+            test();
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
