@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css实现多级菜单利用css '>'选择器</title>
+    <style type="text/css">
+        *{margin:0; padding:0;}
+        #nav{
+            background-color: #eee;width:600px;height:40px;margin:0 auto;
+        }
+        #nav ul{
+            list-style: none;
+        }
+        #nav ul li{
+            float: left; line-height:40px;text-align: center;position:relative;
+        }
+        #nav ul li a{text-decoration: none;color:#000;padding: 0 10px;display:block;}
+        #nav ul li a:hover{background-color: #666;color:#fff;}
+        /* ul绝对定位，对应父级元素li需要相对定位；ul相对定位relative的话应该也是可以的,会撑开父级元素的宽度
+         * position：absolute 绝定定位 ,生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。
+        */
+        #nav li > ul{
+            position: absolute;left:0;top:40px;display:none;
+        }
+        #nav li > ul li{
+            float: none;background-color: #eee;margin-top:2px;
+        }
+         #nav ul li>ul li a:hover{background-color: #cd7054;}
+         /*css方式实现下来菜单的展示和隐藏*/  
+        #nav li:hover>ul{display: block;}
+        /*#nav ul li ul li ul{display:none;}
+        #nav ul li ul li:hover ul{display:block;}
+        #nav ul li ul li ul li{float: none;background-color: #ddd;margin-top:2px;}
+        #nav ul li ul li ul li a:hover{background-color:#ff7256 ;}*/
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+    function showSubMenu(li){
+        //var subMenu = li.getElementsByTagName("ul")[0];
+        //subMenu.style.display="block";
+        var subMenu = $(li).find("ul").eq(0);
+        subMenu.show();
+    }
+    function hideSubMenu(li){
+        //var subMenu = li.getElementsByTagName("ul")[0];
+        //subMenu.style.display="none";
+        var subMenu = $(li).find("ul").eq(0);
+        subMenu.hide();
+    }
+        /*window.onload=function(){
+            var menu = document.getElementById("menu");
+            var menuUl=menu.getElementsByTagName("ul")[0];
+            var menuUlLi = menuUl.getElementsByTagName("li");
+            var liLength = menuUlLi.length;
+            for(var i=0;i<liLength;i++){
+                menuUlLi[i].onmouseover=function(){
+                    showSubMenu(this);
+                };
+                menuUlLi[i].onmouseout=function(){
+                    hideSubMenu(this);
+                };
+            }
+        };*/
+        $(function (){
+
+            var li = $("#menu ul li");
+            var len = li.length;
+            for(var i=0;i<len;i++){
+                li[i].onmouseover=function(){
+                    showSubMenu(this);
+                };
+                li[i].onmouseout=function(){
+                    hideSubMenu(this);
+                };
+            }
+        });
+    </script>
+</head>
+<body>
+<div id="nav">
+    <ul>
+        <li><a href="javascript:void(0)">首页</a></li>
+        <li><a href="javascript:void(0)">课程大厅</a>
+            <ul>
+                <li><a href="javascript:void(0)">Javascript</a>
+                <li><a href="javascript:void(0)">jQuery</a>
+            </ul>
+        </li>
+        <li><a href="javascript:void(0)">学习中心</a>
+            <ul>
+                <li><a href="#">视频学习</a>
+                    <ul>
+                        <li><a href="javascript:void(0)">Javascript</a>
+                        <li><a href="javascript:void(0)">jQuery</a>
+                    </ul>
+                </li>
+                <li><a href="#">案例学习</a></li>
+                <li><a href="#">交流平台</a></li>
+            </ul>
+        </li>
+        <li><a href="javascript:void(0)">经典案例</a>
+            <ul>
+                <li><a href="javascript:void(0)">11111</a>
+                <li><a href="javascript:void(0)">22222</a>
+            </ul>
+        </li>
+        <li><a href="javascript:void(0)">关于我们</a></li>
+    </ul>
+
+</div>
+</body>
+</html>
