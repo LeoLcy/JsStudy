@@ -1,0 +1,358 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>多级下拉的纯CSS菜单-xw素材网</title>
+    <style type="text/css">
+        #backgroundHolder {
+            width: 750px;
+            height: 440px;
+            padding-top: 10px;
+            background: url(ulmultitwo/photo.jpg);
+            margin: 0 auto;
+        }
+        /* ----------------------------------------------------------------------------	*/
+        /* default styling */
+        .nav, .nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+            .nav a {
+                text-decoration: none;
+            }
+
+        .nav {
+            font-family: arial, sans-serif;
+            font-size: 12px;
+            width: 650px;
+            margin: 0 auto;
+        }
+            /* style the links */
+            /* needs a background for IE6 - can be a color or a transparent gif */
+            .nav a {
+                background: url(ulmultitwo/tab2.png);
+            }
+                /* style the <b> element so that is does not affect the size of the link */
+                .nav a b {
+                    font-weight: normal;
+                    display: block;
+                    padding: 5px 10px 10px 10px;
+                    color: #fff;
+                }
+
+                .nav a:hover b {
+                    color: #000;
+                    cursor: pointer;
+                }
+
+            .nav .fly .main b {
+                background: url(ulmultitwo/arrow.gif) no-repeat 105px 9px;
+            }
+
+            .nav .down b {
+                background: url(ulmultitwo/arrow2.gif) no-repeat 103px 11px;
+            }
+
+            .nav .right ul b {
+                text-align: right;
+            }
+
+            .nav .right ul .main b {
+                background: url(ulmultitwo/arrow3.gif) no-repeat 10px 9px;
+                text-align: right;
+            }
+            /* HEIGHT */
+            .nav ul ul {
+                top: -30px;
+            }
+            /* position the top of the flyout sub menus */
+            /* WIDTH change this WITH CARE to suit your requirements */
+
+            /*set the link width here*/
+            .nav .drop, .nav a {
+                width: 120px;
+            }
+
+            .nav ul li {
+                max-width: 120px;
+            }
+            /* fix for IE8 */
+            /* set the left flyout position here */
+            .nav ul ul {
+                left: 120px;
+            }
+            /* set the right flyout position here */
+            .nav li.right ul ul {
+                left: auto;
+                right: 120px;
+            }
+            /* make this WIDTH - 1px */ /* or WIDTH - 0.063em if using em sizing */
+            .nav a {
+                margin-right: -119px;
+            }
+            /* ----------------------------------------------------------------------------	*/
+
+            /* DO NOT CHANGE ANYTHING BELOW */
+            .nav li {
+                float: left;
+            }
+            /* fixes several IE related bugs, and allows for clearing */
+            .nav ul {
+                float: left;
+                position: relative;
+                z-index: 20;
+            }
+                /* necessary for float drop and to stack the <ul>s */
+                .nav ul li {
+                    clear: left;
+                }
+            /* must clear the floated list item inside sublist */
+            .nav a {
+                position: relative;
+                display: block;
+            }
+                /* needs to have a position, to be above the rest */
+                .nav a.main {
+                    float: left; /* necessary for float drop */
+                    margin-top: 10000px;
+                }
+            /* bring the top level links back into view */
+            .nav .drop, .nav .fly {
+                margin-top: -10000px;
+            }
+            /* hide the sub links and their containers, opera has low upper limits */
+            .nav ul {
+                margin-bottom: -5000px;
+            }
+            /* avoid any interaction between the subs, can be any large size */
+            /* The bit that does ALL the work to bring the sub menus into view */
+            .nav a:hover, .nav a:focus, .nav a:active {
+                margin-right: 0;
+                z-index: 10;
+                outline: 0;
+            }
+
+                .nav a:hover b, .nav a:focus b, .nav a:active b {
+                    color: #000;
+                }
+            /* OPERA fix */
+            .nav ul:hover, .nav ul ul:hover {
+                clear: left;
+            }
+        /* to stop intermittent sub link :hover problems */
+
+        /* ----------------------------------------------------------------------------	*/
+    </style>
+    <!--[if lte IE 7]>
+    <style type="text/css">
+    /* bug fixes for IE7 and lower - DO NOT CHANGE */
+    .nav .fly {width:99%;} /* make each flyout 99% of the prevous flyout */
+    a, a:hover, a:active, a:focus {} /* requires a blank style for :active to stop it being buggy */
+    .nav a {background:none; cursor:pointer; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='ulmultitwo/tab2.png', sizingMethod='scale');
+    }
+    </style>
+    <![endif]-->
+</head>
+<body>
+    <div id="backgroundHolder">
+        <ul class="nav">
+            <li class="drop"><a class="main" href="#url"><b>Home</b></a></li>
+            <li class="drop">
+                <a class="main down" href="#url"><b>Equipment</b></a>
+                <ul class="sub1">
+                    <li class="fly">
+                        <a class="main" href="#url"><b>Cameras</b></a>
+                        <ul>
+                            <li class="fly"><a class="main" href="#url"><b>Polaroid</b></a>
+                                <ul>
+                                    <li><a href="#url"><b>Canon</b></a></li>
+                                    <li><a href="#url"><b>Nikon</b></a></li>
+                                    <li><a href="#url"><b>Panasonic</b></a></li>
+                                    <li><a href="#url"><b>Kodak</b></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#url"><b>Digital</b></a></li>
+                            <li class="fly">
+                                <a class="main" href="#url"><b>Digital SLR</b></a>
+                                <ul>
+                                    <li class="fly"><a class="main" href="#url"><b>Canon</b></a>
+                                        <ul>
+                                            <li><a href="#url"><b>Canon</b></a></li>
+                                            <li><a href="#url"><b>Nikon</b></a></li>
+                                            <li><a href="#url"><b>Panasonic</b></a></li>
+                                            <li><a href="#url"><b>Kodak</b></a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#url"><b>Nikon</b></a></li>
+                                    <li><a href="#url"><b>Panasonic</b></a></li>
+                                    <li><a href="#url"><b>Kodak</b></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#url"><b>Second Hand</b></a></li>
+                        </ul>
+                    </li>
+                    <li class="fly">
+                        <a class="main " href="#url"><b>Video Cameras</b></a>
+                        <ul>
+                            <li class="fly">
+                                <a class="main" href="#url"><b>Latest Models</b></a>
+                                <ul>
+                                    <li><a href="#url"><b>Nikon</b></a></li>
+                                    <li><a href="#url"><b>Panasonic</b></a></li>
+                                    <li><a href="#url"><b>Canon</b></a></li>
+                                    <li><a href="#url"><b>Pentax</b></a></li>
+                                    <li><a href="#url"><b>Minolta</b></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#url"><b>Special Offers</b></a></li>
+                            <li><a href="#url"><b>Professional</b></a></li>
+                        </ul>
+                    </li>
+                    <li class="fly">
+                        <a class="main" href="#url"><b>Lenses</b></a>
+                        <ul>
+                            <li class="fly">
+                                <a class="main" href="#url"><b>Digital</b></a>
+                                <ul>
+                                    <li class="fly">
+                                        <a class="main" href="#url"><b>Zoom</b></a>
+                                        <ul>
+                                            <li><a href="#url"><b>Nikon</b></a></li>
+                                            <li><a href="#url"><b>Pentax</b></a></li>
+                                            <li><a href="#url"><b>Minolta</b></a></li>
+                                            <li><a href="#url"><b>Panasonic</b></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="fly">
+                                        <a class="main" href="#url"><b>Macro</b></a>
+                                        <ul>
+                                            <li><a href="#url"><b>Panasonic</b></a></li>
+                                            <li><a href="#url"><b>Minolta</b></a></li>
+                                            <li><a href="#url"><b>Pentax</b></a></li>
+                                            <li><a href="#url"><b>Canon</b></a></li>
+                                            <li><a href="#url"><b>Nikon</b></a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#url"><b>Fisheye</b></a></li>
+                                    <li><a href="#url"><b>x2 converters</b></a></li>
+                                </ul>
+                            </li>
+                            <li class="fly">
+                                <a class="main" href="#url"><b>Standard SLR</b></a>
+                                <ul>
+                                    <li><a href="#url"><b>Canon</b></a></li>
+                                    <li><a href="#url"><b>Nikon</b></a></li>
+                                    <li><a href="#url"><b>Panasonic</b></a></li>
+                                    <li><a href="#url"><b>Pentax</b></a></li>
+                                    <li><a href="#url"><b>Minolta</b></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="drop">
+                <a class="main down" href="#url"><b>Accessories</b></a>
+                <ul>
+                    <li class="fly">
+                        <a class="main" href="#url"><b>Flashguns</b></a>
+                        <ul>
+                            <li class="fly">
+                                <a class="main" href="#url"><b>Digital Cameras</b></a>
+                                <ul>
+                                    <li><a href="#url"><b>Nikon</b></a></li>
+                                    <li><a href="#url"><b>Canon</b></a></li>
+                                    <li><a href="#url"><b>Panasonic</b></a></li>
+                                    <li><a href="#url"><b>Pentax</b></a></li>
+                                    <li><a href="#url"><b>Kpdak</b></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#url"><b>Film Cameras</b></a></li>
+                            <li><a href="#url"><b>Reflectors</b></a></li>
+                            <li><a href="#url"><b>Stands</b></a></li>
+                            <li><a href="#url"><b>Remote Control</b></a></li>
+                            <li><a href="#url"><b>Batteries</b></a></li>
+                        </ul>
+                    </li>
+                    <li class="fly">
+                        <a class="main" href="#url"><b>Filters</b></a>
+                        <ul>
+                            <li><a href="#url"><b>Ultra Violet</b></a></li>
+                            <li><a href="#url"><b>Lens protection</b></a></li>
+                            <li><a href="#url"><b>Yellow</b></a></li>
+                            <li><a href="#url"><b>Red</b></a></li>
+                            <li><a href="#url"><b>Orange</b></a></li>
+                            <li><a href="#url"><b>Blue</b></a></li>
+                        </ul>
+                    </li>
+                    <li class="fly">
+                        <a class="main" href="#url"><b>Remote Control</b></a>
+                        <ul>
+                            <li><a href="#url"><b>Canon</b></a></li>
+                            <li><a href="#url"><b>Nikon</b></a></li>
+                            <li><a href="#url"><b>Pentax</b></a></li>
+                        </ul>
+                    </li>
+                    <li class="fly">
+                        <a class="main" href="#url"><b>Camera Cases</b></a>
+                        <ul>
+                            <li><a href="#url"><b>Pentax</b></a></li>
+                            <li><a href="#url"><b>Nikox</b></a></li>
+                            <li><a href="#url"><b>Canon</b></a></li>
+                            <li><a href="#url"><b>Pentax</b></a></li>
+                            <li><a href="#url"><b>Kodak</b></a></li>
+                            <li><a href="#url"><b>Minolta</b></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#url"><b>Lens Brush</b></a></li>
+                </ul>
+            </li>
+            <li class="drop right">
+                <a class="main down" href="#url"><b>Outlets</b></a>
+                <ul>
+                    <li><a href="#url"><b>Support</b></a></li>
+                    <li><a href="#url"><b>Buying</b></a></li>
+                    <li><a href="#url"><b>Photographers</b></a></li>
+                    <li class="fly">
+                        <a class="main" href="#url"><b>Stockist</b></a>
+                        <ul>
+                            <li><a href="#url"><b>Currys</b></a></li>
+                            <li><a href="#url"><b>Dixons</b></a></li>
+                            <li><a href="#url"><b>Jessops</b></a></li>
+                            <li><a href="#url"><b>Staples</b></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#5"><b>General</b></a></li>
+                    <li class="fly">
+                        <a class="main" href="#url"><b>Sales</b></a>
+                        <ul>
+                            <li><a href="#url"><b>USA</b></a></li>
+                            <li><a href="#url"><b>CANADA</b></a></li>
+                            <li><a href="#url"><b>South America</b></a></li>
+                            <li class="fly">
+                                <a class="main" href="#url"><b>Europe</b></a>
+                                <ul>
+                                    <li><a href="#url"><b>Britain</b></a></li>
+                                    <li><a href="#url"><b>France</b></a></li>
+                                    <li><a href="#url"><b>Germany</b></a></li>
+                                    <li><a href="#url"><b>Spain</b></a></li>
+                                    <li><a href="#url"><b>Italy</b></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#url"><b>Australia</b></a></li>
+                            <li><a href="#url"><b>Asia</b></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="drop"><a class="main" href="#url"><b>Privacy Policy</b></a></li>
+        </ul>
+    </div>
+    <br />
+    <br />
+
+
+</body>
+</html>
