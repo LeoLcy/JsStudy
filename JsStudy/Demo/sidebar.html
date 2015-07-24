@@ -1,0 +1,268 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js full-height">
+<!--<![endif]-->
+
+<head>
+	<meta charset="UTF-8">
+	<title>sidebar demo</title>
+<!--
+功能实现：
+1、点击sidebar下方的关闭按钮sidebar向左方滑出屏幕，关闭按钮向右方滑出，同时旋转为加号
+2、点击加号，sidebar向右方滑动，加号向左滑动，并旋转为叉号
+3、点击sidebar上的菜单栏，相应内容栏（左->右）滑动
+4、如果有已经打开的内容栏，则已打开的内容栏关闭，新点击的相应的内容栏从下向上滑动
+5、打开的内容栏的右上方的关闭按钮，点击后内容栏向左滑动关闭
+6、完整性，如果已经有打开的内容栏，点击sidebar下方的关闭按钮，sidebar关闭，已打开的内容栏也应该关闭
+实现步骤：
+1、实现html的文档结构
+2、编写JavaScript代码，添加相应事件、函数和逻辑
+3、在每个事件函数中添加动画效果
+-->
+<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap-glyphicons/1.0/css/bootstrap-glyphicons.css">
+<style type="text/css">
+	body{padding: 0;margin: 0;font-family: 'Microsoft YaHei','Open Sans', 'trebuchet ms', arial, sans-serif;}
+	ul{list-style: none;padding-left: 0;}
+	/* sidebar加上padding-top: 100px;后会出现滚动条 */
+	#sidebar{position: absolute;width:35px;min-height:100%;background-color: #e1e1e1;z-index: 100;}
+	.item{text-align: center;margin-top: 15px;cursor: pointer;}
+	.item div{font-size: 12px;}
+	#closeBar{position: absolute;bottom: 30px;width: 35px;text-align: center;cursor: pointer;}
+	.nav-content{position: absolute;min-height: 100%;x;width: 170px;background-color: #e1e1e1;opacity:0;text-align: center;z-index: 99;}
+	.nav-content .nav-con-close{float: right;cursor: pointer;padding: 5px 5px 0 0;}
+	/*左边栏左移动画*/
+	.sidebar-move-left{
+		-webkit-animation-name: sml;
+		animation-name: sml;
+		-webkit-animation-duration: 1s;
+		animation-duration: 1s;
+		-webkit-animation-iteration-count: 1;
+		animation-iteration-count: 1;
+		-webkit-animation-fill-mode: forwards;
+		animation-fill-mode: forwards;
+	}
+	@-webkit-keyframes sml{
+		from{}
+		to{
+			-webkit-transform:translateX(-120px);
+			transform:translateX(-120px);
+		}
+	}
+	@keyframes sml{
+		from{}
+		to{
+			-webkit-transform:translateX(-120px);
+			transform:translateX(-120px);
+		}
+	}
+	.sidebar-move-right{
+		-webkit-animation-name: smr;
+		animation-name: smr;
+		-webkit-animation-duration: 1s;
+		animation-duration: 1s;
+		-webkit-animation-iteration-count: 1;
+		animation-iteration-count: 1;
+		-webkit-animation-fill-mode: forwards;
+		animation-fill-mode: forwards;
+	}
+	@-webkit-keyframes smr{
+		from{}
+		to{
+			-webkit-transform:translateX(120px);
+			transform:translateX(120px);
+		}
+	}
+	@keyframes smr{
+		from{}
+		to{
+			-webkit-transform:translateX(120px);
+			transform:translateX(120px);
+		}
+	}
+	/*关闭按钮右移动画*/
+	.closeBar-move-right{
+		-webkit-animation-name: cmr;
+		animation-name: cmr;
+		-webkit-animation-duration: 1s;
+		animation-duration: 1s;
+		-webkit-animation-iteration-count: 2;
+		animation-iteration-count: 2;
+		-webkit-animation-fill-mode: forwards;
+		animation-fill-mode: forwards;
+	}
+	@-webkit-keyframes cmr{
+		from{}
+		to{
+			-webkit-transform:translateX(160px) rotate(405deg) scale(1.5) ;
+			transform:translateX(160px) rotate(405deg) scale(1.5) ;
+		}
+	}
+	@keyframes cmr{
+		from{}
+		to{
+			-webkit-transform:translateX(160px) rotate(405deg) scale(1.5) ;
+			transform:translateX(160px) rotate(405deg) scale(1.5) ;
+		}
+	}
+	.closeBar-move-left{
+		-webkit-animation-name: cml;
+		animation-name: cml;
+		-webkit-animation-duration: 1s;
+		animation-duration: 1s;
+		-webkit-animation-iteration-count: 1;
+		animation-iteration-count: 1;
+		-webkit-animation-fill-mode: forwards;
+		animation-fill-mode: forwards;
+	}
+	@-webkit-keyframes cml{
+		from{
+			-webkit-transform:scale(1.5);
+			transform:scale(1.5);
+		}
+		to{
+			-webkit-transform:translateX(-160px) rotate(-45deg) scale(1) ;
+			transform:translateX(-160px) rotate(-45deg) scale(1) ;
+		}
+	}
+	@keyframes cml{
+		from{
+			-webkit-transform:scale(1.5);
+			transform:scale(1.5);
+		}
+		to{
+			-webkit-transform:translateX(-160px) rotate(-45deg) scale(1) ;
+			transform:translateX(-160px) rotate(-45deg) scale(1) ;
+		}
+	}
+</style>
+</head>
+<body>
+	<div id="sidebar">
+		<ul>
+			<li id="prof" class="item">
+				<span class="glyphicon glyphicon-user"></span>
+				<div>我</div>
+			</li>
+			<li id="asset" class="item">
+				<span class="glyphicon glyphicon-usd"></span>
+				<div>资产</div>
+			</li>
+			<li id="brand" class="item">
+				<span class="glyphicon glyphicon-heart"></span>
+				<div>品牌</div>
+			</li>
+			<li id="broadcast" class="item">
+				<span class="glyphicon glyphicon-bell"></span>
+				<div>直播</div>
+			</li>
+			<li id="foot" class="item">
+				<span class="glyphicon glyphicon-eye-open"></span>
+				<div>看过</div>
+			</li>
+			<li id="calender" class="item">
+				<span class="glyphicon glyphicon-time"></span>
+				<div>日历</div>
+			</li>
+		</ul>
+		<div id="closeBar">
+			<span class="glyphicon glyphicon-remove"></span>
+		</div>
+	</div>
+	<div id="prof-content" class="nav-content">
+		<div class="nav-con-close"><i class="glyphicon glyphicon-chevron-left"></i></div>
+		<div>我</div>
+	</div>
+	<div id="asset-content" class="nav-content">
+		<div class="nav-con-close"><i class="glyphicon glyphicon-chevron-left"></i></div>
+		<div>资产</div>
+	</div>
+	<div id="brand-content" class="nav-content">
+		<div class="nav-con-close"><i class="glyphicon glyphicon-chevron-left"></i></div>
+		<div>品牌</div>
+	</div>
+	<div id="broadcast-content" class="nav-content">
+		<div class="nav-con-close"><i class="glyphicon glyphicon-chevron-left"></i></div>
+		<div>直播</div>
+	</div>
+	<div id="foot-content" class="nav-content">
+		<div class="nav-con-close"><i class="glyphicon glyphicon-chevron-left"></i></div>
+		<div>看过</div>
+	</div>
+	<div id="calender-content" class="nav-content">
+		<div class="nav-con-close"><i class="glyphicon glyphicon-chevron-left"></i></div>
+		<div>日历</div>
+	</div>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script>
+	(function(){
+		var Menubar=function(){
+			this.el=document.querySelector('#sidebar ul');
+			this.state = "allClosed";
+			this.el.addEventListener("click",function(e){
+				e.stopPropagation();
+			});
+			var self=this;
+			this.currentMenuItem=null;
+			this.menuList=document.querySelectorAll('#sidebar ul > li');
+			for(var i=0,len=this.menuList.length;i<len;i++){
+				this.menuList[i].addEventListener("click",function(e){
+					/*注意this的指向的对象*/
+					var menuCurrent=document.getElementById(e.currentTarget.id+"-content");
+					console.log(menuCurrent.id);
+					if(self.state=="allClosed"){
+						menuCurrent.style.opacity=100;
+						self.state="hasOpened";
+						self.currentMenuItem=menuCurrent;
+					}else{
+						self.currentMenuItem.style.opacity=0;
+						menuCurrent.style.opacity=100;
+						self.state="hasOpened";
+						self.currentMenuItem=menuCurrent;
+
+					}
+				});
+			}
+		}
+
+		var Sidebar=function(eId,closeBarId){
+			var self=this;
+			this.state = 'opened';
+			this.el = document.getElementById(eId||'sidebar');
+			this.closeBar = document.getElementById(closeBarId||'closeBar');
+			this.menubar=new Menubar();
+			this.el.addEventListener("click",function(event){
+				if(event.target!==self.el){
+					self.triggerSwitch();
+				}
+			})
+		}
+		Sidebar.prototype.close=function(){
+			console.log("close");
+			this.el.style.left="-120px";
+			this.el.className="sidebar-move-left";
+			this.closeBar.style.left="160px";
+			this.closeBar.className="closeBar-move-right";
+			this.state="closed";//将状态改为打开
+		};
+		Sidebar.prototype.open=function(){
+			console.log("open");
+			this.el.className="sidebar-move-right";
+			this.closeBar.className="closeBar-move-left";
+			this.state="opened";
+		};
+		Sidebar.prototype.triggerSwitch=function(){
+			if(this.state==="opened"){
+				this.close();
+			}else{
+				this.open();
+			}
+		};
+		var sidebar=new Sidebar();
+
+	})();
+	</script>
+</body>
+</html>
