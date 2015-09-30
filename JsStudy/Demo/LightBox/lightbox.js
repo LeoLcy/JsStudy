@@ -9,11 +9,11 @@
         this.bodyNode = $(document.body);
         //渲染剩余的dom，并且插入到body
         this.renderDOM();
-        this.picViewArea = this.popupWin.find(".lightbox-pic-view");
+        this.picViewArea = this.popupWin.find(".lightbox-pic-view");//图片展示区域
         this.popupPic = this.popupWin.find(".lightbox-image");
-        this.picCaptionArea = this.popupWin.find(".lightbox-pic-caption");
-        this.prevBtn = this.picViewArea.find(".lightbox-prev-btn");
-        this.nextBtn = this.picViewArea.find(".lightbox-next-btn");
+        this.prevBtn = this.picViewArea.find(".lightbox-prev-btn");//左按钮
+        this.nextBtn = this.picViewArea.find(".lightbox-next-btn");//右按钮
+        this.picCaptionArea = this.popupWin.find(".lightbox-pic-caption");//图片标题区域
         this.captionText = this.picCaptionArea.find(".lightbox-pic-desc");//图片标题
         this.currentIndex = this.picCaptionArea.find(".lightbox-of-index");//索引
         this.closeBtn = this.picCaptionArea.find(".lightbox-close-btn");//关闭按钮
@@ -21,8 +21,9 @@
         this.groupName = null;
         this.groupData = [];//放置同一组数据
         this.bodyNode.delegate("js-lightbox,*[data-role=lightbox]","click", function(e) {
-            //阻止事件冒泡
+            //阻止事件冒泡 
             e.stopPropagation();
+            //$(this)为点击的对象
             var currentGroupName = $(this).attr("data-group");
 
             if (currentGroupName != self.groupName) {
@@ -32,6 +33,29 @@
             }
             self.initPouup($(this));
         });
+        this.popupMask.click(function () {
+            $(this).fadeOut();
+            self.popupWin.fadeOut();
+        });
+        this.closeBtn.click(function () {
+            self.popupMask.fadeOut();
+            self.popupWin.fadeOut();
+        });
+        this.prevBtn.click(function () {
+
+        }).mouseover(function () {
+            $(this).addClass("lightbox-prev-btn-show");
+        }).mouseout(function () {
+            $(this).removeClass("lightbox-prev-btn-show");
+        });
+        this.nextBtn.click(function () {
+
+        }).mouseover(function () {
+            $(this).addClass("lightbox-next-btn-show");
+        }).mouseout(function () {
+            $(this).removeClass("lightbox-next-btn-show");
+        });
+
     };
     LightBox.prototype = {
         showMaskAndPopup: function (sourceSrc, currentId) {
@@ -53,8 +77,86 @@
                 marginLeft: -(winWidth / 2 + 10) / 2,
                 top: -viewHeight
             }).animate({top:(winHeight-viewHeight)/2}, function() {
-                //
+                //加载图片
+                self.loadPicSize(sourceSrc);
             });
+            //根据当前点击元素的id获取在当前组别中的索引
+            this.index = this.getIndexOf(currentId);
+            var groupLength = this.groupData.length;
+            if (groupLength > 1) {
+                if (this.index === 0) {
+                    this.prevBtn.addClass("disabled");
+                    this.nextBtn.removeClass("disabled");
+                } else if (this.index === groupLength-1) {
+                    this.prevBtn.removeClass("disabled");
+                    this.nextBtn.addClass("disabled");
+                } else {
+                    this.prevBtn.removeClass("disabled");
+                    this.nextBtn.removeClass("disabled");
+                }
+            }
+        },
+        loadPicSize: function (sourceSrc) {
+            var self = this;
+            //先清除之前设置的图片宽高
+            self.popupPic.css({width:"auto",height:"auto"}).hide();
+            this.preLoadPic(sourceSrc, function () {
+                self.popupPic.attr("src", sourceSrc);
+                var picWidth = self.popupPic.width(), picHeight = self.popupPic.height();
+                self.changePic(picWidth,picHeight);
+            });
+        },
+        changePic: function (picWidth, picHeight) {
+            var self = this;
+            var winWidth = $(window).width();
+            var winHeight = $(window).height();
+            //计算宽度高度
+            //如果图片宽高是否超出窗口宽高
+            var scale = Math.min(winWidth / (picWidth + 10), winHeight / (picHeight + 10), 1);
+            picHeight *= scale; picWidth *= scale;
+            this.picViewArea.animate({
+                width:picWidth-10,height:picHeight-10
+            });
+            this.popupWin.animate({
+                width: picWidth,
+                height: picHeight,
+                marginLeft: -(picWidth / 2),
+                top: (winHeight-picHeight)/2
+            }, function () {
+                self.popupPic.css({
+                    width: picWidth-10,
+                    height: picHeight-10
+                }).fadeIn();
+                self.picCaptionArea.fadeIn();
+            });
+            //设置描述文字和索引
+            this.captionText.text(this.groupData[this.index].caption);
+            this.currentIndex.text("当前索引：" + (this.index + 1) + " Of " + this.groupData.length);
+        },
+        preLoadPic: function (src, callback) {//图片加载完后获取图片的宽度高度
+            var img = new Image();
+            if (!!window.ActiveXObject) {
+                img.onreadystatechange = function () {
+                    if (this.readyState == "complete") {
+                        callback();
+                    };
+                };
+            } else {
+                img.onload = function () {
+                    callback();
+                };
+            };
+            img.src = src;
+        },
+        getIndexOf: function (currentId) {
+            var index = 0;
+            $(this.groupData).each(function (i) {
+                index=i;
+                if (this.id === currentId) {
+                    return false;
+                }
+            });
+            return index;
         },
         initPouup: function(currentObj) {
             var self = this;

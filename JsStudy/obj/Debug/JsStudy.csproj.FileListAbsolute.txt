@@ -4,3 +4,14 @@ E:\vs2013\JsStudy\JsStudy\bin\JsStudy.pdb
 E:\vs2013\JsStudy\JsStudy\obj\Debug\JsStudy.csprojResolveAssemblyReference.cache
 E:\vs2013\JsStudy\JsStudy\obj\Debug\JsStudy.dll
 E:\vs2013\JsStudy\JsStudy\obj\Debug\JsStudy.pdb
+E:\1Leo\JsStudy\JsStudy\JsStudy\bin\JsStudy.dll.config
+E:\1Leo\JsStudy\JsStudy\JsStudy\bin\JsStudy.dll
+E:\1Leo\JsStudy\JsStudy\JsStudy\bin\JsStudy.pdb
+E:\1Leo\JsStudy\JsStudy\JsStudy\obj\Debug\JsStudy.csprojResolveAssemblyReference.cache
+E:\1Leo\JsStudy\JsStudy\JsStudy\obj\Debug\JsStudy.dll
+E:\1Leo\JsStudy\JsStudy\JsStudy\obj\Debug\JsStudy.pdb
+E:\1Leo\JsStudy\JsStudy\JsStudy\bin\log4net.dll
+E:\1Leo\JsStudy\JsStudy\JsStudy\bin\log4net.xml
+E:\1Leo\JsStudy\JsStudy\JsStudy\bin\Utility.dll
+E:\1Leo\JsStudy\JsStudy\JsStudy\bin\Utility.pdb
+E:\1Leo\JsStudy\JsStudy\JsStudy\bin\log4net.config
