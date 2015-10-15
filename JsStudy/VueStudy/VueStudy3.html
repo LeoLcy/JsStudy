@@ -22,19 +22,25 @@
         <ul>
             <li>
                 <span>用户名：</span>
-                <input  v-model="user.userid" type="text"/>
-                <span class="err" v-show="!validation.userid">用户名不能为空，并且至少6位</span>
+                <input  v-model="user.userid" type="text" v-on="change:validUserId()"/>
+                <!--<span class="err" v-show="!validation.userid">{{userErr.userid}}</span>-->
+                <span class="err" >{{validuserid}}</span>
+                
             </li>
             <li><span>密码：</span>
                 <input  v-model="user.password" type="password"/>
-                <span class="err" v-show="!validation.password">密码不能为空，并且至少6位</span>
+                <!--<span class="err" v-show="!validation.password">密码不能为空，并且至少6位</span>-->
+                <span class="err">{{validpassword}}</span>
             </li>
             <li><span>确认密码：</span>
                 <input  v-model="user.confirmpwd" type="password" />
-                <span class="err" v-show="!validation.confirmpwd">两次输入密码必须相同</span>
+                <!--<span class="err" v-show="!validation.confirmpwd">两次输入密码必须相同</span>-->
+                <span class="err">{{validconfirmpwd}}</span>
             </li>
             <li>
-                <input type="button" value="提交" v-on="click:addUser"/>
+                <span class="err" >{{userErr.userid}}</span>
+                <!--<input type="button" value="提交" v-on="click:addUser"/>-->
+                <input type="button" value="提交" v-on="click:addUser1" />
             </li>
         </ul>
     </div>
