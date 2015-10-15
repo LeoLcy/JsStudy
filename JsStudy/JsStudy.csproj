@@ -102,8 +102,12 @@
     <Content Include="Common\image\image1\6.jpg" />
     <Content Include="Common\image\image1\7.jpg" />
     <Content Include="Common\JS\carousel.js" />
+    <Content Include="Common\JS\jquery.sea.js" />
     <Content Include="Common\JS\jquery-2.1.4.js" />
     <Content Include="carousel.aspx" />
+    <Content Include="Common\JS\sea.js" />
+    <Content Include="Common\JS\vue.js" />
+    <Content Include="Common\static\vueStudy.js" />
     <Content Include="Demo\css3Nav.html" />
     <Content Include="Demo\css多级菜单\29.jpg" />
     <Content Include="Demo\css多级菜单\index.html" />
@@ -149,6 +153,9 @@
     <Content Include="MulObjMove.html" />
     <Content Include="Demo\Navigation.html" />
     <Content Include="TestLog.aspx" />
+    <Content Include="VueStudy\VueStudy1.html" />
+    <Content Include="VueStudy\VueStudy2.html" />
+    <Content Include="VueStudy\VueStudy3.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

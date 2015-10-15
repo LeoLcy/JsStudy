@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>VueStudy</title>
+	<meta charset="utf-8" />
+    <style>
+        .done{
+            text-decoration:line-through;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <h1>{{title | uppercase}}</h1>
+        <ul>
+            <li v-repeat="repeat"
+                v-on="click: done = !done"
+                class="{{done ? 'done' : ''}}">
+                {{content}}
+            </li>
+        </ul>
+    </div>
+    <div id="showTxt" v-text="message|uppercase|reverse" v-on="click:clickFun(message)"></div>
+    <ul id="demo1">
+        <li v-repeat="items" class="item-{{$index}}">
+            {{$index}} - {{parentMsg}} {{childMsg}}
+        </li>
+    </ul>
+    <ul id="tags">
+        <li v-repeat="tags">
+            {{$value}}
+        </li>
+    </ul>
+    <ul id="users">
+        <li v-repeat="user in users">
+            {{user.name}} - {{user.email}}
+        </li>
+    </ul>
+    <div id="demo2" v-demo="LightSlateGray : msg"></div>
+    <script src="../Common/JS/vue.js"></script>
+    <script>
+        var demo = new Vue({
+            el: '#demo',
+            data: {
+                title: 'todos',
+                repeat: [// v-repeat渲染的id
+                  {
+                      done: true,
+                      content: 'Learn JavaScript'
+                  },
+                  {
+                      done: false,
+                      content: 'Learn Vue.js'
+                  }
+                ]
+            }
+        });
+        //当你想要在表达式中访问原来的 DOM event，你可以传递一个 $event 参数进去：
+        //<button v-on="click: submit('hello!', $event)">Submit</button>
+        //methods: {
+        //        submit: function (msg, e) {
+        //            e.stopPropagation()
+        //        }
+        //}
+        var showTxt = new Vue({
+            el: "#showTxt",
+            data: {
+                message: "abcdse",
+                clickFun: function (e) {//click事件怎么传参数 
+                    alert(e.message);
+                }
+                //, onmouseover: function () {//v-on可以绑定多个事件click:clickFun,mouseover:onmouseover,keydown:onKeydown
+                //    alert("onmouseover");
+                //}
+            }
+        });
+        //Vue过滤器//uppercase大写，lowercase小写，reverse反转
+        //http://cn.vuejs.org/api/filters.html
+        var demo = new Vue({
+            el: '#demo1',
+            data: {
+                parentMsg: 'Hello',
+                items: [
+                  { childMsg: 'Foo' },
+                  { childMsg: 'Bar' }
+                ]
+            }
+        });
+        new Vue({
+            el: '#tags',
+            data: {
+                tags: ['JavaScript', 'MVVM', 'Vue.js']
+            }
+        });
+        new Vue({
+            el: '#users',
+            data: {
+                users: [
+                  { name: 'Foo Bar', email: 'foo@bar.com' },
+                  { name: 'John Doh', email: 'john@doh.com' }
+                ]
+            }
+        });
+        Vue.directive('demo', {
+            bind: function () {
+                this.el.style.color = '#fff'
+                this.el.style.backgroundColor = this.arg
+            },
+            update: function (value) {
+                this.el.innerHTML =
+                  'name - ' + this.name + '<br>' +
+                  'raw - ' + this.raw + '<br>' +
+                  'expression - ' + this.expression + '<br>' +
+                  'argument - ' + this.arg + '<br>' +
+                  'value - ' + value
+            }
+        })
+        var demo2 = new Vue({
+            el: '#demo2',
+            data: {
+                msg: 'hello!'
+            }
+        })
+    </script>
+</body>
+</html>

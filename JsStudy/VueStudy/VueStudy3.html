@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>vue登录</title>
+    <meta charset="utf-8" />
+    <link href="../Common/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .err {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <header></header>
+    <div id="content" class="content">
+        <ul>
+            <li>
+                <span>用户名：</span>
+                <input  v-model="user.userid" type="text"/>
+                <span class="err" v-show="!validation.userid">用户名不能为空，并且至少6位</span>
+            </li>
+            <li><span>密码：</span>
+                <input  v-model="user.password" type="password"/>
+                <span class="err" v-show="!validation.password">密码不能为空，并且至少6位</span>
+            </li>
+            <li><span>确认密码：</span>
+                <input  v-model="user.confirmpwd" type="password" />
+                <span class="err" v-show="!validation.confirmpwd">两次输入密码必须相同</span>
+            </li>
+            <li>
+                <input type="button" value="提交" v-on="click:addUser"/>
+            </li>
+        </ul>
+    </div>
+    <footer>
+
+    </footer>
+    <script src="../Common/JS/sea.js"></script><!--id不能取名为seajs-->
+    <script>
+        seajs.config({
+            //base: "./",
+            alias: {
+                "jQuery": "jquery.sea.js"
+                ,"vue": "vue.js"
+                ,"bootstrap": "../bootstrap-3.3.4-dist/js/bootstrap.js"
+            }
+        });
+        seajs.use("../Common/static/vueStudy");
+    </script>
+</body>
+</html>
