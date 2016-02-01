@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+    <div id="example">
+        <my-component msg=" Hello Vue.js!  Hello Vue.js!"></my-component>
+    </div>
+    <script src="../Common/JS/vue.js"></script>
+    <script>
+        // 定义
+        var MyComponent = Vue.extend({
+            props:["msg"],
+            template: '<div>A custom component!{{msg}}</div>'
+        })
+
+        // 注册
+        Vue.component('my-component', MyComponent)
+
+        // 创建根实例
+        new Vue({
+            el: '#example'
+        })
+    </script>
+</body>
+
+</html>

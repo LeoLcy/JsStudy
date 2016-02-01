@@ -58,7 +58,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BootstrapStudy\Default.html" />
     <Content Include="BootstrapStudy\index.html" />
+    <Content Include="BootstrapStudy\Main.html" />
     <Content Include="Common\bimages\chrome-big.jpg" />
     <Content Include="Common\bimages\chrome-logo-small.jpg" />
     <Content Include="Common\bimages\chrome-logo.jpg" />
@@ -107,6 +109,14 @@
     <Content Include="carousel.aspx" />
     <Content Include="Common\JS\sea.js" />
     <Content Include="Common\JS\vue.js" />
+    <Content Include="Common\lib\bootstrap-3.3.5\css\bootstrap-theme.css" />
+    <Content Include="Common\lib\bootstrap-3.3.5\css\bootstrap-theme.min.css" />
+    <Content Include="Common\lib\bootstrap-3.3.5\css\bootstrap.css" />
+    <Content Include="Common\lib\bootstrap-3.3.5\css\bootstrap.min.css" />
+    <Content Include="Common\lib\bootstrap-3.3.5\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Common\lib\bootstrap-3.3.5\js\bootstrap.js" />
+    <Content Include="Common\lib\bootstrap-3.3.5\js\bootstrap.min.js" />
+    <Content Include="Common\lib\bootstrap-3.3.5\js\npm.js" />
     <Content Include="Common\static\vueStudy.js" />
     <Content Include="Demo\css3Nav.html" />
     <Content Include="Demo\css多级菜单\29.jpg" />
@@ -148,7 +158,9 @@
     <Content Include="Demo\nav2.html" />
     <Content Include="Demo\Preview.html" />
     <Content Include="Demo\tab.html" />
-    <Content Include="log4net.config" />
+    <Content Include="log4net.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Move.html" />
     <Content Include="MulObjMove.html" />
     <Content Include="Demo\Navigation.html" />
@@ -156,6 +168,7 @@
     <Content Include="VueStudy\VueStudy1.html" />
     <Content Include="VueStudy\VueStudy2.html" />
     <Content Include="VueStudy\VueStudy3.html" />
+    <Content Include="VueStudy\VueStudy4.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +196,12 @@
     <Content Include="Common\bootstrap-3.3.4-dist\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Common\bootstrap-3.3.4-dist\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Common\bimages\logo.psd" />
+    <Content Include="Common\lib\bootstrap-3.3.5\css\bootstrap-theme.css.map" />
+    <Content Include="Common\lib\bootstrap-3.3.5\css\bootstrap.css.map" />
+    <Content Include="Common\lib\bootstrap-3.3.5\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Common\lib\bootstrap-3.3.5\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Common\lib\bootstrap-3.3.5\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Common\lib\bootstrap-3.3.5\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
